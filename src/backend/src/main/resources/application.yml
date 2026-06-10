@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: spring-ai-chat-sys
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+  ai:
+    model:
+      chat: ${SPRING_AI_MODEL_CHAT:none}
+      embedding: ${SPRING_AI_MODEL_EMBEDDING:none}
+    openai:
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        options:
+          model: ${OPENAI_CHAT_MODEL:gpt-4o-mini}
+      embedding:
+        options:
+          model: ${OPENAI_EMBEDDING_MODEL:text-embedding-3-small}
+
+rag:
+  top-k: ${RAG_TOP_K:4}
+  chunk-size: ${RAG_CHUNK_SIZE:500}
+  chunk-overlap: ${RAG_CHUNK_OVERLAP:80}
+  min-score: ${RAG_MIN_SCORE:0.18}
+  vector-store:
+    mode: ${RAG_VECTOR_STORE_MODE:memory}
+    milvus:
+      host: ${RAG_MILVUS_HOST:localhost}
+      port: ${RAG_MILVUS_PORT:19530}
+      uri: ${RAG_MILVUS_URI:}
+      username: ${RAG_MILVUS_USERNAME:}
+      password: ${RAG_MILVUS_PASSWORD:}
+      token: ${RAG_MILVUS_TOKEN:}
+      database-name: ${RAG_MILVUS_DATABASE_NAME:default}
+      collection-name: ${RAG_MILVUS_COLLECTION_NAME:spring_ai_chat_chunks}
+      dimension: ${RAG_MILVUS_DIMENSION:384}
+
+mysql:
+  enabled: ${MYSQL_ENABLED:false}
+  host: ${MYSQL_HOST:localhost}
+  port: ${MYSQL_PORT:3306}
+  database: ${MYSQL_DATABASE:spring_ai_chat_sys}
+  username: ${MYSQL_USERNAME:root}
+  password: ${MYSQL_PASSWORD:}
+  ddl-auto: ${MYSQL_DDL_AUTO:none}
+  history-read-enabled: ${MYSQL_HISTORY_READ_ENABLED:false}
+
+auth:
+  bootstrap-admin:
+    username: ${AUTH_BOOTSTRAP_ADMIN_USERNAME:}
+    password: ${AUTH_BOOTSTRAP_ADMIN_PASSWORD:}

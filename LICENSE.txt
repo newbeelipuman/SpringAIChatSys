@@ -1,0 +1,10 @@
+All Rights Reserved
+
+Copyright (c) 2026 Zhao Keyu
+
+This project, including its source code, screenshots, diagrams, and documentation, is provided only for the author's personal learning, graduation-design demonstration, and portfolio showcase.
+
+Without written permission from the author, you may not copy, modify, redistribute, resell, commercialize, republish, submit, register, or reuse this work or any substantial part of it for papers, coursework, competition entries, software copyright registration, patent applications, project applications, commercial products, or other academic/commercial claims.
+
+For citation, learning, or communication, please obtain written permission from the author first.
+

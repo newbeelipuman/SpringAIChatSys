@@ -1,0 +1,11 @@
+spring:
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        completions-path: ${OPENAI_CHAT_COMPLETIONS_PATH:/v1/chat/completions}
+        options:
+          model: ${OPENAI_CHAT_MODEL:gpt-4o-mini}
