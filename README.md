@@ -1,30 +1,37 @@
 # SpringAIChatSys
 
-一个基于 Spring AI、Spring Boot 和 Vue 的 RAG 智能问答系统。项目主要用于毕业设计展示，包含后端接口、前端页面、运行配置说明、系统截图和部分流程图导出图。
+SpringAIChatSys is a lightweight RAG question answering system built with Spring AI, Spring Boot, and Vue. It was developed as a graduation design project and includes a runnable backend, a web frontend, screenshots, and exported system diagrams.
 
-## 项目内容
+## Features
+
+- User login, registration, and simple role-based access control
+- Persistent and temporary knowledge ingestion
+- RAG-based question answering with retrieved context
+- Personal question history and knowledge records
+- Admin view for user and history inspection
+- Runtime status page for model, vector store, and data-source state
+
+## Tech Stack
+
+- Backend: Spring Boot, Spring AI, Spring MVC, JPA
+- Frontend: Vue 3, Vite, Element Plus
+- Vector store: in-memory mode by default, optional Milvus
+- Database: optional MySQL for structured data and demo auth
+- LLM: local demo flow by default, optional DeepSeek / OpenAI-compatible APIs
+
+## Repository Layout
 
 ```text
-src/backend      Spring Boot 后端
-src/frontend     Vue + Vite 前端
-src/scripts      本地测试和运行脚本
-screenshots      系统运行效果截图
-diagrams_png     流程图、架构图、ER 图等 PNG 导出图
+src/backend      Spring Boot backend
+src/frontend     Vue + Vite frontend
+src/scripts      Local test and helper scripts
+screenshots      UI screenshots
+diagrams_png     Exported PNG diagrams
 ```
 
-这里放的是公开展示版本，不包含论文全文、答辩 PPT、真实密钥、本地运行数据、可编辑流程图源文件等私人材料。
+## Quick Start
 
-## 技术栈
-
-- 后端：Spring Boot、Spring AI、Spring MVC、JPA
-- 前端：Vue 3、Vite、Element Plus
-- 向量检索：默认内存模式，可切换 Milvus
-- 结构化数据：可选 MySQL
-- 模型接口：支持 DeepSeek / OpenAI 兼容接口，默认也可以用本地演示模式跑通流程
-
-## 快速运行
-
-后端：
+Backend:
 
 ```powershell
 cd src/backend
@@ -32,7 +39,7 @@ copy .env.example .env.local
 mvn spring-boot:run
 ```
 
-前端：
+Frontend:
 
 ```powershell
 cd src/frontend
@@ -41,43 +48,42 @@ $env:VITE_API_PROXY_TARGET="http://localhost:8080"
 npm run dev
 ```
 
-默认后端地址：
+Default URLs:
 
 ```text
-http://localhost:8080
+Backend:  http://localhost:8080
+Frontend: http://localhost:5173
 ```
 
-默认前端地址通常是：
+For full configuration details, see [CONFIG_AND_RUN.md](CONFIG_AND_RUN.md).
 
-```text
-http://localhost:5173
-```
+## Default Mode
 
-更完整的配置说明见 [CONFIG_AND_RUN.md](CONFIG_AND_RUN.md)。
-
-## 默认运行方式
-
-第一次运行建议使用默认配置：
+The first run can use the default local mode:
 
 ```text
 RAG_VECTOR_STORE_MODE=memory
 MYSQL_ENABLED=false
 ```
 
-这样不需要先安装 MySQL、Milvus，也不需要外部模型密钥，适合先检查系统页面和基础接口。
+This mode does not require MySQL, Milvus, or an external model API key. To enable DeepSeek, MySQL, or Milvus, edit your local `.env.local` file. Do not commit private environment files.
 
-如果要接入 DeepSeek、MySQL 或 Milvus，再修改本地 `.env.local`。不要把 `.env.local` 提交到仓库。
+## Notes
 
-## 主要功能
+This repository is a public code and UI showcase. It does not include thesis documents, defense slides, private runtime data, real API keys, editable diagram sources, or local database/vector-store files.
 
-- 登录、注册和基础角色区分
-- 知识录入、临时知识和持久知识管理
-- 基于检索结果的 RAG 问答
-- 问答历史和知识记录查看
-- 管理员视角的用户与历史数据查看
-- 系统运行状态和模型配置状态展示
+All rights reserved. Please do not reuse this project for coursework, papers, competitions, software copyright registration, patent applications, commercial projects, or redistribution without written permission.
 
-## 说明
+## 中文说明
 
-本仓库只用于项目展示和学习交流。未经作者书面许可，请勿用于论文、课程作业、竞赛、软著、专利、商业项目或二次公开发布。
+SpringAIChatSys 是一个基于 Spring AI、Spring Boot 和 Vue 的 RAG 智能问答系统，主要用于毕业设计和作品展示。仓库中保留了可运行的前后端代码、配置说明、系统截图和 PNG 流程图；论文全文、答辩材料、真实密钥、本地运行数据和可编辑流程图源文件没有公开。
+
+首次运行建议使用默认内存模式：
+
+```text
+RAG_VECTOR_STORE_MODE=memory
+MYSQL_ENABLED=false
+```
+
+需要接入 DeepSeek、MySQL 或 Milvus 时，再按 [CONFIG_AND_RUN.md](CONFIG_AND_RUN.md) 修改本地配置。
 
